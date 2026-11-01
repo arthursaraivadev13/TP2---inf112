@@ -1,0 +1,5 @@
+lib/.build/
+*.o
+*.exe
+main
+pokemon
