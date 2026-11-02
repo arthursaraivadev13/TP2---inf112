@@ -11,18 +11,19 @@
 #include <fstream>
 #include <iostream>
 
+//construtor
 Treinador::Treinador(std::string nome, int pokemons[3])
     : nome(nome), ativo(0) {
     std::cout << "[DEBUG] Criando treinador: " << nome << std::endl;
 
     for (int i = 0; i < 3; i++) {
-        this->equipe[i] = nullptr;
+        this->equipe[i] = nullptr;  //remove o lixo do array de equipe artibuindo nullptr
     }
 
     this->itens[0] = new Cura();
     this->itens[1] = new Fortificante();
 
-    // Tenta abrir o pokemons.txt no diretorio atual e no relativo
+    // Tenta abrir o pokemons.txt na pasta lib e na raiz
     std::ifstream arquivo("pokemons.txt");
     if (!arquivo.is_open()) arquivo.open("lib/pokemons.txt");
     if (!arquivo.is_open()) arquivo.open("../pokemons.txt");
@@ -37,7 +38,7 @@ Treinador::Treinador(std::string nome, int pokemons[3])
 
     while (arquivo >> id >> tipo >> nomePoke >> vida >> ataque >> defesa) {
         for (int i = 0; i < 3; i++) {
-            if (pokemons[i] == id) {
+            if (pokemons[i] == id) { //coloca o pokemon selecionado na posicao i da equipe
                 if (tipo == "fogo") {
                     this->equipe[i] = new PokemonFogo(nomePoke, id, vida, ataque, defesa);
                 } else if (tipo == "agua") {
@@ -57,6 +58,7 @@ Treinador::Treinador(std::string nome, int pokemons[3])
     arquivo.close();
 }
 
+//destrutor
 Treinador::~Treinador() {
     for (int i = 0; i < 3; i++) {
         if (this->equipe[i] != nullptr) {
@@ -101,6 +103,7 @@ int Treinador::getIndiceAtivo() const {
     return this->ativo;
 }
 
+//permite trocar de pokemon olhando se o pokemon no indice é valido
 bool Treinador::trocar(int indice) {
     if (indice < 0 || indice >= 3) return false;
     if (indice == this->ativo) return false;
@@ -112,7 +115,7 @@ bool Treinador::trocar(int indice) {
 
 bool Treinador::perdeu() const {
     for (int i = 0; i < 3; i++) {
-        if (this->equipe[i] != nullptr && !this->equipe[i]->derrotado()) {
+        if (this->equipe[i] != nullptr && !this->equipe[i]->derrotado()) { //todos pokemons da equipe derrotados
             return false;
         }
     }

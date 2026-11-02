@@ -8,7 +8,7 @@ class Fortificante:public Item{
     public:
     Fortificante();
     virtual ~Fortificante();
-    bool usar (Pokemon &alvo) ;
+    bool usar (Pokemon &alvo) override ;
 };
 
 

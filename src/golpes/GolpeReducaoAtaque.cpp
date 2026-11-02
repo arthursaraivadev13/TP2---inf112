@@ -12,7 +12,7 @@ std::string GolpeReducaoAtaque::aplicar(Pokemon& atacante, Pokemon& alvo) {
 
     std::string msg = atacante.getNome() + " usou " + getNome() + " e causou " + std::to_string(danoEfetivo) + " de dano!";
 
-    //Se o alvo ainda estiver vivo, reduz o ataque dele em 8
+    //Se o alvo ainda estiver vivo após o ataque, reduz o ataque dele em 8
     if (!alvo.derrotado()) {
         alvo.reduzirAtaque(8);
         msg += " O ataque de " + alvo.getNome() + " foi reduzido!";

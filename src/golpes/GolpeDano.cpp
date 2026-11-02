@@ -8,7 +8,7 @@ GolpeDano::~GolpeDano(){}
 
 std::string GolpeDano::aplicar(Pokemon& atacante, Pokemon& alvo) {
     int danoFinal = calcularDano(atacante, alvo, this->poder);
-    int danoEfetivo = alvo.perderVida(danoFinal);
+    int danoEfetivo = alvo.perderVida(danoFinal); //Aplica o dano no alvo
 
     return atacante.getNome() + " usou " + getNome() + " e causou " + std::to_string(danoEfetivo) + " de dano!";
 }
