@@ -11,8 +11,8 @@ bool Cura:: usar(Pokemon &alvo){
     if(alvo.getVida()>=alvo.getVidaMaxima()){ //impede que cure alem da vida maxima
         return false; 
     }
-    if (alvo.derrotado()) return false; //olha se o pokemon ja foi derrotado
-        return false
+    if (alvo.derrotado())  //olha se o pokemon ja foi derrotado
+        return false;
 
     alvo.curar(20); //cura 20 de vida chamando a funcao de cura
     return true;

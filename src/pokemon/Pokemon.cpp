@@ -2,10 +2,18 @@
 #include "Golpe.hpp"
 
 //Construtor
+// Construtor: inicializa os atributos na mesma ordem em que foram declarados no .hpp
 Pokemon::Pokemon(std::string nome, int idPokemon, int vida, int ataque, int defesa, std::string tipo)
-    : nome(nome), idPokemon(idPokemon), vida(vida), vidaMaxima(vida), 
-      ataque(ataque), defesa(defesa), tipo(tipo), 
-      reducaoProximoAtaque(0), fortalecido(false) { 
+    : nome(nome),
+      tipo(tipo),               
+      idPokemon(idPokemon),
+      vida(vida),
+      vidaMaxima(vida),         // vida máxima começa igual à vida inicial
+      ataque(ataque),
+      defesa(defesa),
+      reducaoProximoAtaque(0),  // nenhum efeito temporário ativo
+      fortalecido(false) {
+    // Golpes começam vazios; as subclasses chamam definirGolpe() para preenchê-los
     this->golpes[0] = nullptr;
     this->golpes[1] = nullptr;
 }
